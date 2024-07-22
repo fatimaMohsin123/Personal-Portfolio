@@ -1,0 +1,84 @@
+/* The actual timeline (the vertical ruler) */
+.main_timeline {
+  position: relative;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+/* Remove or comment out this section to remove the vertical line */
+/*
+  .main_timeline::after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    background-color: #fff;
+    top: 0;
+    bottom: 0;
+    left: auto;
+    margin-left: -3px;
+  }
+  */
+
+/* Container around content */
+.timeline {
+  position: relative;
+  background-color: inherit;
+  width: 100%;
+}
+
+/* The circles on the timeline */
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  right: 1px;
+  background-color: #fff;
+  top: 18px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the right */
+.right {
+  padding: 0px 0px 20px 40px;
+  left: auto;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  position: absolute;
+  top: 18px;
+  z-index: 1;
+  left: 30px;
+  border: medium solid #fff;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #fff transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -10px;
+}
+
+@media (max-width: 991px) {
+  .main_timeline {
+    max-width: 100%;
+  }
+}
+
+.gradient {
+  /* fallback for old browsers */
+  background: #8cc9e9;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    rgb(226, 233, 239),
+    rgb(134, 193, 233)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgb(226, 233, 239), rgb(134, 193, 233));
+}
